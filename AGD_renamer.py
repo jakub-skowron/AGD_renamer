@@ -54,7 +54,7 @@ def search_directory():
 
 def run_button():
     try:
-        #function main ->  returns countity of files names changed(img or png, stp, dxf)
+        #function main ->  returns quantity of files names changed(img or png, to, dxf)
         func = main(load_workbook(path1),path2)
         func
 

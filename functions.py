@@ -24,7 +24,7 @@ def words_linking(order, revision, pos, nor, mirror, material, material_type, th
 def agd_namelist_func(sheet):
 
     """ 
-        This function create a namelist of parts in according to WEISCHER standard.
+        This function create a namelist of parts in according to XYZ standard.
         List includes correct name array which you can use to AGD files.
     """
 
@@ -66,7 +66,7 @@ def agd_namelist_func(sheet):
 def main(wb,path):
 
     """
-        This is a main program to change names of AGD data.
+        This is a main function which changing files name according to the part list.
     """
 
     names = agd_namelist_func(wb.active)
@@ -79,8 +79,8 @@ def main(wb,path):
     for file in files:
         for name in names:
             try:
-                number = name[:].split('_')[2][3:]
-                if file[:4] == number:
+                position = 'Pos' + file[:4]
+                if position in name:
                     if file.endswith('.jpg') or file.endswith('.JPG'):
                         new_name = name + '.jpg'
                         os.rename(path + file, path + new_name)
