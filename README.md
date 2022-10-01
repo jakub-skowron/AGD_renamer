@@ -2,7 +2,7 @@
 
 ### Description
 
-AGD_renamer was created to automate the files renaming process in according to the parts list. Parts file's names organisation is necessery to making documentation in our production plant. Program gets data from the parts list, prepares a correct words array and changes files names (in .png, .jpg, .dxf, .stp formats).
+AGD_renamer was created to automate the files renaming process in according to the parts list. Parts file's names organisation is necessery to make documentation in our production plant. Program gets data from the parts list, prepares a correct words array and changes files names (in .png, .jpg, .dxf, .stp formats).
 
 ### Requirements
 
