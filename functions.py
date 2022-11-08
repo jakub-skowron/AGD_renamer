@@ -1,5 +1,6 @@
 import os
 
+
 def words_linking(order, revision, pos, nor, mirror, material, material_type, thickness):
 
     """
@@ -25,9 +26,9 @@ def agd_namelist_func(sheet):
 
     """ 
         This function create a namelist of parts in according to XYZ standard.
-        List includes correct name array which you can use to AGD files.
+        List includes correct name order which you can use to AGD files.
     """
-
+    
     k = 9
     my_list = []
 
