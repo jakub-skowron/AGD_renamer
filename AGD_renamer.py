@@ -3,7 +3,7 @@ from tkinter import ttk
 from tkinter import messagebox
 from tkinter import filedialog
 from openpyxl import load_workbook
-from functions import main
+from root import main
 import ntpath
 import os
 
@@ -15,7 +15,6 @@ import os
 
 root = Tk()
 root.title("AGD parts files renamer")
-
 mainframe = ttk.Frame(root, padding="3 3 12 12")
 mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
 root.resizable(FALSE,FALSE)
@@ -57,7 +56,6 @@ def run_button():
         #function main ->  returns quantity of files names changed(img or png, to, dxf)
         func = main(load_workbook(path1),path2)
         func
-
         if len(os.listdir(path2)) == 0:
             messagebox.showwarning(message="You don't have any files in selected directory!")
         elif func == (0,0,0):
