@@ -57,14 +57,14 @@ def make_part_names_list(sheet):
         List includes correct name order which you can use to AGD files.
     """
     k = 9
-    my_list = []
+    name_order_list = []
     while sheet[f'B{k}'].value is not None:
         part = Part(sheet, k)
         part = part.make_order_of_part_name()
         if part:
-            my_list.append(part)
+            name_order_list.append(part)
         k = k+1
-    return my_list
+    return name_order_list
 
 def main(wb,path):
     """
