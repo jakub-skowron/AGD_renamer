@@ -1,13 +1,11 @@
 import os
 
-
 from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
 from tkinter import filedialog
 from openpyxl import load_workbook
 import ntpath
-
 
 from functions import main
 
