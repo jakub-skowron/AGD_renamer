@@ -1,11 +1,16 @@
+import os
+
+
 from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
 from tkinter import filedialog
 from openpyxl import load_workbook
-from root import main
 import ntpath
-import os
+
+
+from functions import main
+
 
 '''
     AGD renamer GUI.
@@ -53,8 +58,9 @@ def search_directory():
 
 def run_button():
     try:
-        #function main ->  returns quantity of files names changed(img or png, to, dxf)
+        #function main ->  returns quantity of files names were changed(img or png, stp and dxf)
         func = main(load_workbook(path1),path2)
+        #execution of main function
         func
         if len(os.listdir(path2)) == 0:
             messagebox.showwarning(message="You don't have any files in selected directory!")
@@ -65,6 +71,7 @@ def run_button():
             root.destroy()
     except:
         messagebox.showerror(message='Input Error. Check your inputs and try again!')
+
 
 def close_button():
     root.destroy()

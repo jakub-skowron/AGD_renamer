@@ -21,7 +21,7 @@ class PartName():
                 self.thickness = self.thickness.replace(',', '_')
             elif '.' in self.thickness:
                 self.thickness = self.thickness.replace('.', '_')
-                
+
     def make_a_word_order(self):
         """
         This method joining words in correct order and making a name of the file
@@ -35,6 +35,7 @@ class PartName():
             if self.thickness:
                 self.name = self.name + '_t=' + str(self.thickness[2:]) + 'mm'
             return self.name
+
 
 def make_part_names_list(sheet):
     """ 
@@ -52,9 +53,10 @@ def make_part_names_list(sheet):
         k = k+1
     return name_order_list
 
+
 def main(wb,path):
     """
-        This is a main function which changing files name according to the parts list and counting how many file's name were changed (extension type included).
+        This is a main function which renames files according to the parts list and returns how many file names were changed (extension type included).
     """
     names = make_part_names_list(wb.active)
     files = os.listdir(path)
