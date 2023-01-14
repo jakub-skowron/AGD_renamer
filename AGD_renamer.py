@@ -61,7 +61,7 @@ def run_button():
         elif func == (0,0,0):
             messagebox.showwarning(message="Unfortunately, this directory don't have any files fitting with the parts list!")
         else:
-            messagebox.showinfo(message=f'Done! Changed names: .img/.png: {func[0]}, .stp: {func[1]}, .dxf: {func[2]}')
+            messagebox.showinfo(message=f'Done! Changed names: .img/.png: {func[".png"]+func[".jpg"]}, .stp: {func[".stp"]}, .dxf: {func[".dxf"]}')
             root.destroy()
     except:
         messagebox.showerror(message='Input Error. Check your inputs and try again!')
