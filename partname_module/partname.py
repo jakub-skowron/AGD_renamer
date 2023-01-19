@@ -7,13 +7,13 @@ class PartName():
         self.sheet = sheet
         self.row_number = row_number
         self.order = self.sheet['G1'].value
-        self.revision = self.sheet[f'A{self.row_number}'].value
-        self.pos = self.sheet[f'B{self.row_number}'].value
-        self.nor = self.sheet[f'D{self.row_number}'].value
-        self.mirror = self.sheet[f'E{self.row_number}'].value
-        self.material = self.sheet[f'H{self.row_number}'].value
-        self.thickness = self.sheet[f'L{self.row_number}'].value
-        self.material_type = self.sheet[f'C{self.row_number}'].value
+        self.revision = self.sheet['A{}'.format(self.row_number)].value
+        self.pos = self.sheet['B{}'.format(self.row_number)].value
+        self.nor = self.sheet['D{}'.format(self.row_number)].value
+        self.mirror = self.sheet['E{}'.format(self.row_number)].value
+        self.material = self.sheet['H{}'.format(self.row_number)].value
+        self.thickness = self.sheet['L{}'.format(self.row_number)].value
+        self.material_type = self.sheet['C{}'.format(self.row_number)].value
         if self.material:
             self.material = self.material.replace('.', '_')
         if self.thickness:
@@ -45,7 +45,7 @@ def make_part_names_list(sheet):
     k = 9
     name_order_list = []
     
-    while sheet[f'B{k}'].value is not None:
+    while sheet['B{}'.format(k)].value is not None:
         part_name = PartName(sheet, k)
         part_name = part_name.make_a_word_order()
         if part_name:

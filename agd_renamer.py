@@ -7,7 +7,7 @@ from tkinter import filedialog
 from openpyxl import load_workbook
 import ntpath
 
-from functions import main
+from partname_module.partname import main
 
 
 '''
