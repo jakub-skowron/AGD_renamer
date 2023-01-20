@@ -4,16 +4,14 @@ import os
 class PartName():
 
     def __init__(self, sheet, row_number):
-        self.sheet = sheet
-        self.row_number = row_number
-        self.order = self.sheet['G1'].value
-        self.revision = self.sheet['A{}'.format(self.row_number)].value
-        self.pos = self.sheet['B{}'.format(self.row_number)].value
-        self.nor = self.sheet['D{}'.format(self.row_number)].value
-        self.mirror = self.sheet['E{}'.format(self.row_number)].value
-        self.material = self.sheet['H{}'.format(self.row_number)].value
-        self.thickness = self.sheet['L{}'.format(self.row_number)].value
-        self.material_type = self.sheet['C{}'.format(self.row_number)].value
+        self.order = sheet['G1'].value
+        self.revision = sheet['A{}'.format(row_number)].value
+        self.pos = sheet['B{}'.format(row_number)].value
+        self.nor = sheet['D{}'.format(row_number)].value
+        self.mirror = sheet['E{}'.format(row_number)].value
+        self.material = sheet['H{}'.format(row_number)].value
+        self.thickness = sheet['L{}'.format(row_number)].value
+        self.material_type = sheet['C{}'.format(row_number)].value
         if self.material:
             self.material = self.material.replace('.', '_')
         if self.thickness:
@@ -27,15 +25,15 @@ class PartName():
         This method joining words in correct order and making a name of the file
         """
         if self.material_type == 'A' or self.material_type == 'KN' or self.material_type == 'G':
-            self.name = 'A' + str(self.order) + '_' + str(self.revision) + '_Pos' + str(self.pos) + '_' + str(self.nor) + 'xNorm'
+            name = 'A' + str(self.order) + '_' + str(self.revision) + '_Pos' + str(self.pos) + '_' + str(self.nor) + 'xNorm'
             if self.mirror:
-                self.name = self.name + '_' + str(self.mirror) + 'xGes'
+                name = name + '_' + str(self.mirror) + 'xGes'
             if self.material:
-                self.name = self.name + '_Mat_' + str(self.material)
+                name = name + '_Mat_' + str(self.material)
             if self.thickness:
-                self.name = self.name + '_t=' + str(self.thickness[2:]) + 'mm'
-            return self.name
-
+                name = name + '_t=' + str(self.thickness[2:]) + 'mm'
+            return name
+            
 
 def make_part_names_list(sheet):
     """ 

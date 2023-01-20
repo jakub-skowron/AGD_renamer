@@ -11,7 +11,6 @@ class Cell():
     def __repr__(self):
         return '{}'.format(self.value)
 
-
 class TestPartName(unittest.TestCase):
 
     row1 = 1
