@@ -13,7 +13,7 @@ def make_part_names_list(sheet):
     
     while sheet['B{}'.format(k)].value is not None:
         part_name = PartName(sheet, k)
-        part_name = part_name.make_a_word_order()
+        part_name.make_a_word_order()
         if part_name:
             name_order_list.append(part_name)
         k = k+1
@@ -23,17 +23,17 @@ def name_changer(wb,path):
     """
         This is a main function which renames files according to the parts list.
     """
-    names = make_part_names_list(wb.active)
-    files = os.listdir(path)
+    new_files = make_part_names_list(wb.active)
+    old_files = os.listdir(path)
 
-    for file_name in files:
-        for new_name in names:
+    for old_file in old_files:
+        for new_file in new_files:
             try:
-                position = "Pos" + file_name[:4]
-                if position in new_name:
-                    new_name.add_extension(file_name)
-                    PartName.extension_counter(file_name)
-                    os.rename(path + file_name, path + new_name)
+                position = "Pos" + old_file[:4]
+                if position in new_file.name:
+                    new_file = new_file.add_extension_from(old_file)
+                    PartName.extension_counter(new_file)
+                    os.rename(path + old_file, path + new_file)
             except FileNotFoundError:
                 pass
             except IndexError:

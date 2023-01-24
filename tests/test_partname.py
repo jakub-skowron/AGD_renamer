@@ -1,7 +1,7 @@
 import unittest
 
 from partname_module.partname import PartName
-from cell import Cell
+from .cell import Cell
 
 
 class TestPartName(unittest.TestCase):
@@ -44,7 +44,7 @@ class TestPartName(unittest.TestCase):
         partname1.make_a_word_order()
         file_name = "0582.jpg"
 
-        self.assertEqual(partname1.add_extension(file_name),"A720000_K00_Pos0582_3xNorm_3xGes_Mat_3_3547_t=3_3mm.jpg")
+        self.assertEqual(partname1.add_extension_from(file_name),"A720000_K00_Pos0582_3xNorm_3xGes_Mat_3_3547_t=3_3mm.jpg")
 
     def test_extension_counter(self):
         file_name = "0582.jpg"
