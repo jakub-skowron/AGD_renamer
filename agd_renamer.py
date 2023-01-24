@@ -1,4 +1,5 @@
 import os
+import time
 
 from tkinter import *
 from tkinter import ttk
@@ -7,7 +8,8 @@ from tkinter import filedialog
 from openpyxl import load_workbook
 import ntpath
 
-from partname_module.partname import main
+from partname_module.name_changer import name_changer
+from partname_module.partname import PartName
 
 
 '''
@@ -56,16 +58,16 @@ def search_directory():
 
 def run_button():
     try:
-        #function main ->  returns quantity of files names were changed(img or png, stp and dxf)
-        func = main(load_workbook(path1),path2)
-        #execution of main function
-        func
+        path_to_workbook = load_workbook(path1)
+        path_to_files = path2
+        name_changer(path_to_workbook,path_to_files)
+
         if len(os.listdir(path2)) == 0:
             messagebox.showwarning(message="You don't have any files in selected directory!")
-        elif func == (0,0,0):
+        elif PartName.stp == 0 and PartName.dxf == 0 and PartName.jpg == 0 and PartName.png == 0:
             messagebox.showwarning(message="Unfortunately, this directory don't have any files fitting with the parts list!")
         else:
-            messagebox.showinfo(message=f'Done! Changed names: .img/.png: {func[".png"]+func[".jpg"]}, .stp: {func[".stp"]}, .dxf: {func[".dxf"]}')
+            messagebox.showinfo(message=f'Done! Changed names: .jpg/.png: {PartName.jpg+PartName.png}, .stp: {PartName.stp}, .dxf: {PartName.dxf}')
             root.destroy()
     except:
         messagebox.showerror(message='Input Error. Check your inputs and try again!')
