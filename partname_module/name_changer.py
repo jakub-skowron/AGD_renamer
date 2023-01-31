@@ -35,6 +35,6 @@ def name_changer(wb,path):
                     PartName.extension_counter(new_file)
                     os.rename(path + old_file, path + new_file)
             except FileNotFoundError:
-                pass
+                print(f"{old_file} - File Not Found")
             except IndexError:
-                pass
+                print("Index Error")
