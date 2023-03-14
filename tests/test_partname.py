@@ -1,6 +1,6 @@
 import unittest
 
-from partname_module.partname import PartName
+from partname_module.partname import PartName, Extension
 from .cell import Cell
 
 
@@ -43,14 +43,16 @@ class TestPartName(unittest.TestCase):
         partname1 = PartName(row_number=self.row1, sheet=self.sheet1)
         partname1.make_a_word_order()
         file_name = "0582.jpg"
+        extension = Extension(file_name)
 
-        self.assertEqual(partname1.add_extension_from(file_name),"A720000_K00_Pos0582_3xNorm_3xGes_Mat_3_3547_t=3_3mm.jpg")
+        self.assertEqual((partname1.name+extension.name),"A720000_K00_Pos0582_3xNorm_3xGes_Mat_3_3547_t=3_3mm.jpg")
 
     def test_extension_counter(self):
         file_name = "0582.jpg"
-        PartName.extension_counter(file_name)
+        extension = Extension(file_name)
+        extension.extension_counter()
 
-        self.assertEqual(PartName.jpg,1)
+        self.assertEqual(Extension.extensions['.jpg'],1)
 
 if __name__=="__main__":
     unittest.main()
